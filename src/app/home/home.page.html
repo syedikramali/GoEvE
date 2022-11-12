@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      GOEve
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">GOEve</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+
+    <p>Scan the QR Code to verify Tickets</p>
+    <img style="padding: 20px;"
+      src="https://upload.wikimedia.org/wikipedia/commons/4/43/WhatsApp_click-to-chat_QR_code.png" alt="Barcode" />
+
+    <ion-button (click)="scanQRCode()">
+      <ion-icon name="scan-outline" style="margin-right:20px"></ion-icon>
+      Scan Now
+    </ion-button>
+  </div>
+
+  <ion-modal (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" shape="round">
+              <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding t-modal" style="--background: #4F6A3F;">
+        <div id="container">
+          <h2 class="white">Ticket Verified</h2>
+          <p *ngIf="barcodeData && barcodeData.text">#{{barcodeData.text}}</p>
+          <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+            <title>Checkmark Circle</title>
+            <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none"
+              stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+              d="M352 176L217.6 336 160 272" />
+          </svg>
+
+          <h1>SUCCESSFULLY CHECKED</h1>
+        </div>
+      </ion-content>
+
+    </ng-template>
+  </ion-modal>
+</ion-content>

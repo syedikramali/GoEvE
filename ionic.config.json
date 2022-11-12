@@ -1,0 +1,7 @@
+{
+  "name": "GoEve",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
